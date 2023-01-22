@@ -22,7 +22,7 @@ jobs:
     - name: Login to dockerhub
       uses: docker/login-action@v1
       with: 
-        username: ${{ secrets.DOCKER_USERNAME }}
+        username: cleowoman
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Set up Docker Builds
@@ -34,25 +34,25 @@ jobs:
         context: ./udagram-api-feed
         file: ./udagram-api-feed/Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME}}/udagram-api-feed:v1
+        tags: cleowoman/udagram-api-feed:v1
     - name: Build and push User image
       uses: docker/build-push-action@v2
       with:
         context: ./udagram-api-user
         file: ./udagram-api-user/Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME}}/udagram-api-user:v1
+        tags: cleowoman/udagram-api-user:v1
     - name: Build and push Frontend image
       uses: docker/build-push-action@v2
       with:
         context: ./udagram-frontend
         file: ./udagram-frontend/Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME}}/udagram-frontend:v2
+        tags: cleowoman/udagram-frontend:v2
     - name: Build and push reverseproxy image
       uses: docker/build-push-action@v2
       with:
         context: ./udagram-reverseproxy
         file: ./udagram-reverseproxy/Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME}}/udagram-reverseproxy:v1
+        tags: cleowoman/udagram-reverseproxy:v1
